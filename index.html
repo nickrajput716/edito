@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edito - Modern Image Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container disable">
+        <div class="header">
+            <h1>✨ Edito</h1>
+            <p>Edit, transform, and resize your images with ease</p>
+        </div>
+        
+        <div class="wrapper">
+            <div class="editor-panel">
+                <div class="section">
+                    <div class="section-title">Filters</div>
+                    <div class="options">
+                        <button class="btn active" id="brightness">
+                            <i class="fas fa-sun"></i> Brightness
+                        </button>
+                        <button class="btn" id="saturation">
+                            <i class="fas fa-droplet"></i> Saturation
+                        </button>
+                        <button class="btn" id="inversion">
+                            <i class="fas fa-adjust"></i> Inversion
+                        </button>
+                        <button class="btn" id="grayscale">
+                            <i class="fas fa-circle-half-stroke"></i> Grayscale
+                        </button>
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-info">
+                            <span class="name">Brightness</span>
+                            <span class="value">100%</span>
+                        </div>
+                        <input type="range" value="100" min="0" max="200" class="filter-slider">
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Rotate & Flip</div>
+                    <div class="options rotate-options">
+                        <button class="btn" id="left" title="Rotate Left">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                        <button class="btn" id="right" title="Rotate Right">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button class="btn" id="horizontal" title="Flip Horizontal">
+                            <i class="fas fa-arrows-left-right"></i>
+                        </button>
+                        <button class="btn" id="vertical" title="Flip Vertical">
+                            <i class="fas fa-arrows-up-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Resize Dimensions</div>
+                    <div class="resize-inputs">
+                        <div class="input-group">
+                            <label>Width (px)</label>
+                            <input type="number" id="width-input" placeholder="Auto" min="1">
+                        </div>
+                        <div class="input-group">
+                            <label>Height (px)</label>
+                            <input type="number" id="height-input" placeholder="Auto" min="1">
+                        </div>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="maintain-ratio" checked>
+                        <label for="maintain-ratio">Maintain aspect ratio</label>
+                    </div>
+                    <div class="file-info" id="file-info" style="display: none;">
+                        <i class="fas fa-info-circle"></i>
+                        <span id="dimensions-text">Original: 0 x 0</span>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">Compress File Size</div>
+                    <div class="input-group">
+                        <label>Target File Size (KB)</label>
+                        <input type="number" id="target-size" placeholder="Enter target size" min="1">
+                    </div>
+                    <div class="slider-container" style="margin-top: 12px;">
+                        <div class="slider-info">
+                            <span class="name">Quality</span>
+                            <span class="value" id="quality-value">92%</span>
+                        </div>
+                        <input type="range" value="92" min="1" max="100" id="quality-slider">
+                    </div>
+                    <div class="file-info" id="size-info" style="display: none; margin-top: 12px;">
+                        <i class="fas fa-file"></i>
+                        <span id="file-size-text">Current: 0 KB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-area" id="preview-area">
+                <div class="empty-state">
+                    <i class="fas fa-image"></i>
+                    <p>No image selected</p>
+                    <small>Choose an image or drag & drop here</small>
+                </div>
+                <img src="" alt="preview" class="preview-img" id="preview-img" style="display: none;">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn reset" id="reset-btn">
+                <i class="fas fa-rotate-right"></i> Reset All
+            </button>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <input type="file" id="file-input" accept="image/*" hidden>
+                <button class="control-btn choose" id="choose-btn">
+                    <i class="fas fa-folder-open"></i> Choose Image
+                </button>
+                <button class="control-btn save" id="save-btn">
+                    <i class="fas fa-download"></i> Download Image
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
